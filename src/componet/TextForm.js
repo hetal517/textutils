@@ -34,26 +34,26 @@ export default function TextForm(props) {
   return (
     <>
     <div className="container" style={{color:props.mode === 'dark' ? 'white' : 'black'}}>
-        <h1>{props.heading}</h1>
+        <h2 className='my-3'>{props.heading}</h2>
      <div className="mb-3">
      <textarea className="form-control" value={text}  onChange={handleonchange}  style={{backgroundColor:props.mode === 'dark' ? 'grey' : 'white' , color : props.mode === 'dark' ? 'white' : 'black'}} id="mybox" rows="8"></textarea>
      </div>
-     <button className="btn btn-primary mx-2" onClick={handleupclick}>Convert To Upper Case</button>
-     <button className="btn btn-primary mx-2" onClick={handleloclick}>Convert To Lower Case</button>
-     <button className="btn btn-primary mx-2" onClick={handleclear}>Clear Text</button>  
-     <button className="btn btn-primary mx-2" onClick={handlespace}>Removes Extra space</button>
+     <button className="btn btn-primary mx-2 my-1" onClick={handleupclick}>Convert To Upper Case</button>
+     <button className="btn btn-primary mx-2 my-1" onClick={handleloclick}>Convert To Lower Case</button>
+     <button className="btn btn-primary mx-2 my-1" onClick={handleclear}>Clear Text</button>  
+     <button className="btn btn-primary mx-2 my-1" onClick={handlespace}>Removes Extra space</button>
 
 
      </div>
  
     <div className="container my-3" style={{color:props.mode === 'dark' ? 'white' : 'black'}}>
       <h2>Your Text Summary</h2>
-     <p>{text.split(" ").filter(word => word.trim() !== "").length}: words, {text.length} Characters</p>
-      <p>{0.008 * text.split(" ").length}Minutes read</p>
+     <p>{text.split(/\s+/).filter(word => word.trim() !== "").length}: words, {text.length} Characters</p>
+      <p>{0.008 * text.split(" ").filter(word => word.trim() !== "").length}Minutes read</p>
     </div>
 
     <h2 style={{color:props.mode === 'dark' ? 'white' : 'black'}}>Preview</h2>
-<p style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>{text.length > 0 ? text:"Enter something in the textbox above to preview it here"}</p>
+      <p style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>{text.length > 0 ? text:"Nothing to preview!!!"}</p>
     </>
   );
 }
